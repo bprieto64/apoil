@@ -20,7 +20,7 @@ public class VoitureController {
 
     @GetMapping("/")
     public String list(Model model) {
-        model.addAttribute("voiture", voitureApi.getAll());
+        model.addAttribute("voitures", voitureApi.getAll());
         return "home";
     }
  

@@ -34,6 +34,11 @@
 				class="boutonAccueil col-md-9 offset-md-3 btn btn-primary">Acheter
 				un véhicule d'occasion</a>
 		</div>
+    <div class="card" th:each="voiture : ${voitures}" >
+        <div class="card-body">
+                <p class="card-text" th:text="${voiture.getMarque()}"> </p>
+            </div>
+            </div>
 	</div>
 </body>
 </html>
