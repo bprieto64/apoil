@@ -14,16 +14,15 @@ import java.util.Map;
 public class ApiService {
 
     List getList(String url) {
-        ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null);
-        Map<String, Object> data = new JacksonJsonParser().parseMap(response.getBody());
-        System.out.println(data);
+        ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null); 
+        List<Object> data = new JacksonJsonParser().parseList(response.getBody());
         return (List) data;
     }
 
     Object get(String url) {
         ResponseEntity<String> response = sendRequest(url, HttpMethod.GET, null);
         Map<String, Object> data = new JacksonJsonParser().parseMap(response.getBody());
-        return data.get("data");
+        return data;
     }
 
     Object put(String url, String entity) {

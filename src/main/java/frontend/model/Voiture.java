@@ -10,7 +10,14 @@ public class Voiture {
 	private boolean gps;
 	private boolean climatisation;
 	private String photo;
+	private String description;
 	
+	public String getDescription() {
+		return description;
+	}
+	public void setDescription(String description) {
+		this.description = description;
+	}
 	public Integer getId() {
 		return id;
 	}

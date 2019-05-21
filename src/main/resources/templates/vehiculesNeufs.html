@@ -5,7 +5,7 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="../style/style.css">
+<link rel="stylesheet" href="./style.css">
 
 <script
 	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -26,14 +26,18 @@
 		<a class="navbar-brand" href="#">Monster Garage</a>
 	</nav>
 
-	<div class="h-100 d-flex justify-content-center align-items-center">
-		<div class="row alignement">
-			<a href="vehiculesNeufs.html"
-				class="col-md-9 offset-md-3 btn btn-primary">Acheter un véhicule
-				neuf</a> 
-			<a href="./vehiculesOccasion.jsp"
-				class="boutonAccueil col-md-9 offset-md-3 btn btn-primary">Acheter
-				un véhicule d'occasion</a>
+	<div class="container">
+		<h2 class="centrerTexte col-md-12">Acheter un véhicule neuf</h2>
+		<div class="row">
+			<div class="col-md-4" th:each="voiture : ${voitures}">
+				<a th:href="@{'/vehiculesNeufs/' + ${voiture.id}}"><img
+					class="img-fluid img-thumbnail" src="./autopsieVol2.jpg"></a>
+				<div class="caption">
+					<p
+						th:text="${voiture.getMarque() + ' ' + voiture.getModele() 
+					+ ' | ' + voiture.getPrix()} + '€'"></p>
+				</div>
+			</div>
 		</div>
 	</div>
 </body>

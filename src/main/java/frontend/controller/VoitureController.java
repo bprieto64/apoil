@@ -20,8 +20,26 @@ public class VoitureController {
 
     @GetMapping("/")
     public String list(Model model) {
-        model.addAttribute("voiture", voitureApi.getAll());
+        // model.addAttribute("voitures", voitureApi.getAll());
         return "home";
+    }
+    
+    @GetMapping("/vehiculesNeufs")
+    public String list2(Model model) {
+    	model.addAttribute("voitures", voitureApi.getAll());
+    	return "vehiculesNeufs";
+    }
+    
+    @GetMapping("/vehiculesNeufs/{voitureId}")
+    public String get(Model model, @PathVariable Integer voitureId) {
+    	model.addAttribute("voiture", voitureApi.get(voitureId));
+    	return "descriptionVoiture";
+    }
+    
+    @GetMapping("/vehiculesNeufs/{voitureId}/acheter")
+    public String get2(Model model, @PathVariable Integer voitureId) {
+    	model.addAttribute("voiture", voitureApi.get(voitureId));
+    	return "detailAcheteur";
     }
  
 //    @GetMapping("/garage/{garageId}")
