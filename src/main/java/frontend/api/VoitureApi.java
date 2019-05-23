@@ -34,6 +34,11 @@ public class VoitureApi implements Api<Voiture> {
         return mapper.convertValue(apiService.get(url + '/' + id), new TypeReference<Voiture>() {
         });
     }
+    
+    public Voiture[] getPhotos() {
+    	return mapper.convertValue(apiService.getList("http://localhost:8081/voitures/photos"), new TypeReference<Voiture[]>() {
+        });
+    }
 
     @Override
     public Voiture create(Voiture entity) throws JsonProcessingException {

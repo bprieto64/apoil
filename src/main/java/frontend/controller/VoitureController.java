@@ -1,16 +1,19 @@
 package frontend.controller;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-
 import frontend.api.VoitureApi;
+import frontend.model.Voiture;
 
+import java.io.File;
+import java.io.IOException;
+import java.util.Base64;
+
+import org.apache.commons.io.FileUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class VoitureController {
@@ -20,12 +23,19 @@ public class VoitureController {
 
     @GetMapping("/")
     public String list(Model model) {
-        // model.addAttribute("voitures", voitureApi.getAll());
         return "home";
     }
     
     @GetMapping("/vehicules")
     public String list2(Model model) {
+    	for (Voiture a : voitureApi.getPhotos()) {
+    		byte[] decodedBytes = Base64.getDecoder().decode(a.getPhoto());
+			try {
+				FileUtils.writeByteArrayToFile(new File("src/main/resources/img/" + a.getModele() + ".png"), decodedBytes);
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+    	}
     	model.addAttribute("voitures", voitureApi.getAll());
     	return "vehicules";
     }
@@ -35,41 +45,6 @@ public class VoitureController {
     	model.addAttribute("voiture", voitureApi.get(voitureId));
     	return "descriptionVoiture";
     }
+
     
-    // @GetMapping("/vehiculesNeufs/{voitureId}/acheter")
-    // public String get2(Model model, @PathVariable Integer voitureId) {
-    //	model.addAttribute("voiture", voitureApi.get(voitureId));
-    //	return "detailAcheteur";
-    // }
- 
-//    @GetMapping("/garage/{garageId}")
-//    public String get(Model model, @PathVariable Integer garageId) {
-//        model.addAttribute("garage", garageApi.get(garageId));
-//        return "garage/show";
-//    }
-//
-//    @GetMapping("/garage/new")
-//    public String create(Model model) {
-//        Garage garage = new Garage();
-//        model.addAttribute("garage", garage);
-//        return "garage/new";
-//    }
-//
-//    @GetMapping("/garage/edit/{garageId}")
-//    public String edit(Model model, @PathVariable Integer garageId) {
-//        model.addAttribute("garage", garageApi.get(garageId));
-//        return "garage/edit";
-//    }
-//
-//    @PostMapping("/garage/add")
-//    public String post(@ModelAttribute Garage garage) throws JsonProcessingException {
-//        garageApi.create(garage);
-//        return "redirect:/garage";
-//    }
-//
-//    @PostMapping("/garage/edit")
-//    public String put(@ModelAttribute Garage garage) throws JsonProcessingException {
-//        garageApi.edit(garage);
-//        return "redirect:/garage" + garage.getId();
-//    }
 }

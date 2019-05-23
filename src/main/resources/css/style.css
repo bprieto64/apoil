@@ -15,14 +15,28 @@
 }
 
 .fondGris {
-	background-color: lightgrey;
+	background-color: #DCDCDC;
 }
 
 .soulignage {
 	text-decoration: underline;
+	font-weight: bold;
 }
 
 .btnAcheter {
 	margin-bottom: 10px;
 	margin-top: 10px;
+}
+
+.ecartTitreImg {
+	margin-bottom: 4%;
+}
+
+.ecartImgBouton {
+	margin-bottom: 10%;
+}
+
+.espaceForm {
+	margin-bottom: 2%;
+    margin-left: 14px;
 }

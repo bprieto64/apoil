@@ -11,6 +11,7 @@ public class Voiture {
 	private boolean climatisation;
 	private String photo;
 	private String description;
+	private Integer quantiteRestante;
 	
 	public String getDescription() {
 		return description;
@@ -71,6 +72,12 @@ public class Voiture {
 	}
 	public void setPhoto(String photo) {
 		this.photo = photo;
+	}
+	public Integer getQuantiteRestante() {
+		return quantiteRestante;
+	}
+	public void setQuantiteRestante(Integer quantiteRestante) {
+		this.quantiteRestante = quantiteRestante;
 	}
 	@Override
 	public String toString() {
