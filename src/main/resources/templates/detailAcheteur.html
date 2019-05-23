@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
 <head>
 <link rel="stylesheet"
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -18,59 +18,54 @@
 	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
 	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
 	crossorigin="anonymous"></script>
+<script th:src="@{/js/scriptFormAchat.js}"></script>
 <meta charset="UTF-8">
 <title></title>
 </head>
-<body>
+<body onload="setMaxAnnee();">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="#">Monster Garage</a>
 	</nav>
-
+	
 	<div class="container">
 		<h2 class="centrerTexte col-md-12">Coordonnées de l'acheteur</h2>
-		<form>
+		<form th:action="@{'/vehicules/' + ${voitureId} + '/acheter'}" th:object="${vente}" method="post">
 			<h4>Informations personnelles</h4>
 			<div class="form-group">
-				<label>Nom</label> <input type="text" class="form-control" id="nom"
-					placeholder="Nom">
+				<label>Nom</label> 
+				<input type="text" required th:field="*{utilisateur.nom}" class="form-control" placeholder="Nom" />
 			</div>
 			<div class="form-group">
-				<label>Prénom</label> <input type="text" class="form-control"
-					id="prenom" placeholder="Prénom">
+				<label>Prénom</label> 
+				<input type="text" required th:field="*{utilisateur.prenom}" class="form-control" id="prenom" placeholder="Prénom">
 			</div>
 			<div class="form-group">
-				<label>Date de naissance</label> <input type="date"
-					class="form-control" id="dateDeNaissance"
-					placeholder="jj / mm / YYYY">
+				<label>Année de naissance</label> 
+				<input type="number" required th:field="*{utilisateur.anneeNaissance}" class="form-control" 
+				id="anneeNaissance" min="1900" placeholder="Année de naissance">
 			</div>
 
 			<h4>Adresse</h4>
 			<div class="form-group">
-				<label>Adresse</label> <input type="text" class="form-control"
-					id="adresse" placeholder="Adresse">
-			</div>
-			<div class="form-group">
-				<label>Complément d'adresse</label> <input type="text"
-					class="form-control" id="complementAdresse"
-					placeholder="Complément d'adresse">
+				<label>Adresse</label> 
+				<input type="text" required th:field="*{utilisateur.adresse}" class="form-control" id="adresse" placeholder="Adresse">
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label>Ville</label> <input type="text" class="form-control"
-						id="ville" placeholder="Ville">
+					<label>Ville</label> 
+					<input type="text" required th:field="*{utilisateur.ville}" class="form-control" id="ville" placeholder="Ville">
 				</div>
 				<div class="form-group offset-md-3 col-md-3">
-					<label>Code postal</label> <input type="text" class="form-control"
-						id="codePostal" placeholder="Code postal">
+					<label>Code postal</label> 
+					<input type="text" required th:field="*{utilisateur.codePostal}" class="form-control" id="codePostal" placeholder="Code postal">
 				</div>
 			</div>
 			<h4>Moyen de paiement</h4>
 			<div class="form-group">
-				<select class="custom-select" id="moyenDePaiement">
-					<option selected></option>
-					<option value="cb">Carte bleue</option>
-					<option value="especes">Espèces</option>
-					<option value="cheque">Chèque</option>
+				<select th:field="*{moyenPaiement}" class="custom-select" id="moyenDePaiement">
+					<option th:value="'cb'" th:text="'Carte bleue'"></option>
+					<option th:value="'especes'" th:text="'Espèces'"></option>
+					<option th:value="'cheque'" th:text="'Chèque'"></option>
 				</select>
 			</div>
 			<button type="submit" class="float-right btn btn-primary">Acheter</button>

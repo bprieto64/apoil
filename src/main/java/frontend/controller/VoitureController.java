@@ -24,23 +24,23 @@ public class VoitureController {
         return "home";
     }
     
-    @GetMapping("/vehiculesNeufs")
+    @GetMapping("/vehicules")
     public String list2(Model model) {
     	model.addAttribute("voitures", voitureApi.getAll());
-    	return "vehiculesNeufs";
+    	return "vehicules";
     }
     
-    @GetMapping("/vehiculesNeufs/{voitureId}")
+    @GetMapping("/vehicules/{voitureId}")
     public String get(Model model, @PathVariable Integer voitureId) {
     	model.addAttribute("voiture", voitureApi.get(voitureId));
     	return "descriptionVoiture";
     }
     
-    @GetMapping("/vehiculesNeufs/{voitureId}/acheter")
-    public String get2(Model model, @PathVariable Integer voitureId) {
-    	model.addAttribute("voiture", voitureApi.get(voitureId));
-    	return "detailAcheteur";
-    }
+    // @GetMapping("/vehiculesNeufs/{voitureId}/acheter")
+    // public String get2(Model model, @PathVariable Integer voitureId) {
+    //	model.addAttribute("voiture", voitureApi.get(voitureId));
+    //	return "detailAcheteur";
+    // }
  
 //    @GetMapping("/garage/{garageId}")
 //    public String get(Model model, @PathVariable Integer garageId) {
