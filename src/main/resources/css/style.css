@@ -15,11 +15,12 @@
 }
 
 .fondGris {
-	background-color: lightgrey;
+	background-color: #DCDCDC;
 }
 
 .soulignage {
 	text-decoration: underline;
+	font-weight: bold;
 }
 
 .btnAcheter {
@@ -33,4 +34,9 @@
 
 .ecartImgBouton {
 	margin-bottom: 10%;
+}
+
+.espaceForm {
+	margin-bottom: 2%;
+    margin-left: 14px;
 }

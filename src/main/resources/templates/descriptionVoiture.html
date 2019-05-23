@@ -20,30 +20,30 @@
 	<div class="container fondGris">
 		<h2 class="centrerTexte col-md-12">Description de la voiture</h2>
 		<h3 th:text="${voiture.marque} + ' ' + ${voiture.modele}"></h3>
-		<p>
+		<p class="text-center">
 			<img class="img-fluid img-thumbnail" th:width="500px" th:src="@{'/img/'+ ${voiture.getPhoto()}}">
 		</p>
 		<p>
-			<span class="soulignage">Description : </span> <span th:text="${voiture.description}"></span>
+			<span class="soulignage">Description</span> : <span th:text="${voiture.description}"></span>
 		</p>
 		<p>
-			<span class="soulignage">Couleur : </span> <span th:text="${voiture.couleur}"></span>
+			<span class="soulignage">Couleur</span> : <span th:text="${voiture.couleur}"></span>
 		</p>
 		<p>
-			<span class="soulignage">Année de sortie : </span> <span th:text="${voiture.anneeSortie}"></span>
+			<span class="soulignage">Année de sortie</span> : <span th:text="${voiture.anneeSortie}"></span>
 		</p>
 		<p>
-			<span class="soulignage">Prix : </span> <span th:text="${voiture.prix} + ' €'"></span>
+			<span class="soulignage">Prix</span> : <span th:text="${#numbers.formatDecimal(voiture.prix,0, 'WHITESPACE', 2, 'POINT')} + ' €'"></span>
 		</p>
 		<p>
-			<span class="soulignage">Caractéristiques : </span>
+			<span class="soulignage">Caractéristiques</span> : 
 		<ul>
 			<li th:text="${voiture.gps} ? 'GPS : Oui' : 'GPS : Non'"></li>
 			<li th:text="${voiture.climatisation} ? 'Climatisation : Oui' : 'Climatisation : Non'"></li>
 		</ul>
 		</p>
 
-		<a th:href="@{'/vehicules/' + ${voiture.id} + '/acheter'}" class="btnAcheter btn btn-primary offset-md-9">Acheter le véhicule</a>
+		<a th:href="@{'/vehicules/' + ${voiture.id} + '/acheter'}" th:classappend="${voiture.quantiteRestante} == 0 ? disabled" class="btnAcheter btn btn-primary offset-md-9">Acheter le véhicule</a>
 	</div>
 
 	<script

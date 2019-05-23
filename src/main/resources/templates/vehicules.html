@@ -6,7 +6,8 @@
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
 
-<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/style.css}">
 <meta charset="UTF-8">
 <title>MIAGE Concession</title>
 </head>
@@ -17,6 +18,21 @@
 	</nav>
 	<div class="container">
 		<h2 class="centrerTexte col-md-12">Acheter un véhicule neuf</h2>
+
+		<form class="espaceForm" action="#" th:action="@{~/admin/voitures/}" method="get">
+			<div class="row">
+				<input type="text" class="form-control col" name="marque"
+					placeholder="Marque" /> <input type="text"
+					class="form-control col" name="modele" placeholder="Modele" /> <input
+					type="number" class="form-control col" min="1" name="prixMin"
+					placeholder="Prix Minimum" /> <input type="number"
+					class="form-control col" max="100000000" name="prixMax"
+					placeholder="Prix Maximum" /> <input type="submit"
+					class="btn btn-default col" value="Appliquer" />
+			</div>
+		</form>
+
+
 		<div class="row">
 			<div class="col-md-4" th:each="voiture : ${voitures}">
 
@@ -29,9 +45,9 @@
 					<figcaption>
 						<span th:text="${voiture.getMarque()}"></span>&nbsp;<span
 							th:text="${voiture.getModele()}"></span> | <span
-							th:text="${voiture.getPrix()} + €"></span> <a
-							th:href="@{'/admin/voitures/edit/' + ${voiture.getId()}}"> <i
-							class="fa fa-pencil-square-o" aria-hidden="true"></i>
+							th:text="${#numbers.formatDecimal(voiture.prix,0, 'WHITESPACE', 2, 'POINT')} + €"></span>
+						<a th:href="@{'/admin/voitures/edit/' + ${voiture.getId()}}">
+							<i class="fa fa-pencil-square-o" aria-hidden="true"></i>
 						</a> <a th:href="@{'/admin/voitures/delete/' + ${voiture.getId()}}">
 							<i class="fa fa-trash" aria-hidden="true"></i>
 						</a>
