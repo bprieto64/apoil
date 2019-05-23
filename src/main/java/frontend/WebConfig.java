@@ -19,6 +19,9 @@ public class WebConfig extends WebMvcConfigurerAdapter {
                         "classpath:/img/",
                         "classpath:/css/",
                         "classpath:/js/");
-    }
+        registry
+        .addResourceHandler("swagger-ui.html")
+        .addResourceLocations("classpath:/META-INF/resources/");
+    }	
 
 }
