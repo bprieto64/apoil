@@ -5,64 +5,61 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
 
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
-<script th:src="@{/js/scriptFormAchat.js}"></script>
+<link rel="stylesheet" type="text/css" media="all"
+	th:href="@{/css/style.css}">
 <meta charset="UTF-8">
-<title></title>
+<title>MIAGE Concession</title>
 </head>
+
 <body onload="setMaxAnnee();">
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Monster Garage</a>
+		<a class="navbar-brand" href="/">MIAGE Concession</a>
 	</nav>
-	
+
 	<div class="container">
 		<h2 class="centrerTexte col-md-12">Coordonnées de l'acheteur</h2>
-		<form th:action="@{'/vehicules/' + ${voitureId} + '/acheter'}" th:object="${vente}" method="post">
+		<form th:action="@{'/vehicules/' + ${voitureId} + '/acheter'}"
+			th:object="${vente}" method="post">
 			<h4>Informations personnelles</h4>
 			<div class="form-group">
-				<label>Nom</label> 
-				<input type="text" required th:field="*{utilisateur.nom}" class="form-control" placeholder="Nom" />
+				<label>Nom</label> <input type="text" required
+					th:field="*{utilisateur.nom}" class="form-control"
+					placeholder="Nom" />
 			</div>
 			<div class="form-group">
-				<label>Prénom</label> 
-				<input type="text" required th:field="*{utilisateur.prenom}" class="form-control" id="prenom" placeholder="Prénom">
+				<label>Prénom</label> <input type="text" required
+					th:field="*{utilisateur.prenom}" class="form-control" id="prenom"
+					placeholder="Prénom">
 			</div>
 			<div class="form-group">
-				<label>Année de naissance</label> 
-				<input type="number" required th:field="*{utilisateur.anneeNaissance}" class="form-control" 
-				id="anneeNaissance" min="1900" placeholder="Année de naissance">
+				<label>Année de naissance</label> <input type="number" required
+					th:field="*{utilisateur.anneeNaissance}" class="form-control"
+					id="anneeNaissance" min="1900" placeholder="Année de naissance">
 			</div>
 
 			<h4>Adresse</h4>
 			<div class="form-group">
-				<label>Adresse</label> 
-				<input type="text" required th:field="*{utilisateur.adresse}" class="form-control" id="adresse" placeholder="Adresse">
+				<label>Adresse</label> <input type="text" required
+					th:field="*{utilisateur.adresse}" class="form-control" id="adresse"
+					placeholder="Adresse">
 			</div>
 			<div class="form-row">
 				<div class="form-group col-md-6">
-					<label>Ville</label> 
-					<input type="text" required th:field="*{utilisateur.ville}" class="form-control" id="ville" placeholder="Ville">
+					<label>Ville</label> <input type="text" required
+						th:field="*{utilisateur.ville}" class="form-control" id="ville"
+						placeholder="Ville">
 				</div>
 				<div class="form-group offset-md-3 col-md-3">
-					<label>Code postal</label> 
-					<input type="text" required th:field="*{utilisateur.codePostal}" class="form-control" id="codePostal" placeholder="Code postal">
+					<label>Code postal</label> <input type="text" required
+						th:field="*{utilisateur.codePostal}" class="form-control"
+						id="codePostal" placeholder="Code postal">
 				</div>
 			</div>
 			<h4>Moyen de paiement</h4>
 			<div class="form-group">
-				<select th:field="*{moyenPaiement}" class="custom-select" id="moyenDePaiement">
+				<select th:field="*{moyenPaiement}" class="custom-select"
+					id="moyenDePaiement">
 					<option th:value="'cb'" th:text="'Carte bleue'"></option>
 					<option th:value="'especes'" th:text="'Espèces'"></option>
 					<option th:value="'cheque'" th:text="'Chèque'"></option>
@@ -71,5 +68,17 @@
 			<button type="submit" class="float-right btn btn-primary">Acheter</button>
 		</form>
 	</div>
+
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
 </body>
 </html>

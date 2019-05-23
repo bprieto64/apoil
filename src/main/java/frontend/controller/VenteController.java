@@ -68,7 +68,7 @@ public class VenteController {
     	
         venteApi.create(vente);
         
-        return "redirect:/";
+        return "redirect:/vehicules";
     }
 	
 }

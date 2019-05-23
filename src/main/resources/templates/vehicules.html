@@ -5,40 +5,51 @@
 	href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
 	integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
 	crossorigin="anonymous">
-<link rel="stylesheet" href="./style.css">
 
-<script
-	src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-	integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-	crossorigin="anonymous"></script>
-<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-	integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-	crossorigin="anonymous"></script>
-<script
-	src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-	integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css" media="all" th:href="@{/css/style.css}">
 <meta charset="UTF-8">
-<title></title>
+<title>MIAGE Concession</title>
 </head>
+
 <body>
 	<nav class="navbar navbar-expand-lg navbar-light bg-light">
-		<a class="navbar-brand" href="#">Monster Garage</a>
+		<a class="navbar-brand" href="/">MIAGE Concession</a>
 	</nav>
-
 	<div class="container">
 		<h2 class="centrerTexte col-md-12">Acheter un véhicule neuf</h2>
 		<div class="row">
 			<div class="col-md-4" th:each="voiture : ${voitures}">
-				<a th:href="@{'/vehicules/' + ${voiture.id}}"><img
-					class="img-fluid img-thumbnail" src="./autopsieVol2.jpg"></a>
-				<div class="caption">
-					<p
-						th:text="${voiture.getMarque() + ' ' + voiture.getModele() 
-					+ ' | ' + voiture.getPrix()} + '€'"></p>
-				</div>
+
+
+				<figure>
+					<a th:href="@{'/vehicules/' + ${voiture.id}}"><img
+						class="img-fluid img-thumbnail" th:width="500px"
+						th:src="@{'/img/'+ ${voiture.getPhoto()}}"></a>
+
+					<figcaption>
+						<span th:text="${voiture.getMarque()}"></span>&nbsp;<span
+							th:text="${voiture.getModele()}"></span> | <span
+							th:text="${voiture.getPrix()} + €"></span> <a
+							th:href="@{'/admin/voitures/edit/' + ${voiture.getId()}}"> <i
+							class="fa fa-pencil-square-o" aria-hidden="true"></i>
+						</a> <a th:href="@{'/admin/voitures/delete/' + ${voiture.getId()}}">
+							<i class="fa fa-trash" aria-hidden="true"></i>
+						</a>
+					</figcaption>
+				</figure>
 			</div>
 		</div>
 	</div>
+	<script
+		src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+		integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+		crossorigin="anonymous"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+		integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+		crossorigin="anonymous"></script>
+	<script
+		src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+		integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+		crossorigin="anonymous"></script>
 </body>
 </html>
