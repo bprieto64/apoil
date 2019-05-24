@@ -6,6 +6,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import frontend.model.Voiture;
 
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
@@ -24,8 +26,8 @@ public class VoitureApi implements Api<Voiture> {
     }
 
     @Override
-    public Voiture[] getAll() {
-        return mapper.convertValue(apiService.getList(url), new TypeReference<Voiture[]>() {
+    public Voiture[] getWithFilters(Map<String, String> filters) {
+        return mapper.convertValue(apiService.getList(url,filters), new TypeReference<Voiture[]>() {
         });
     }
 
@@ -36,7 +38,9 @@ public class VoitureApi implements Api<Voiture> {
     }
     
     public Voiture[] getPhotos() {
-    	return mapper.convertValue(apiService.getList(url + "/photos"), new TypeReference<Voiture[]>() {
+
+    	return mapper.convertValue(apiService.getList(url + "/photos", null), new TypeReference<Voiture[]>() {
+
         });
     }
 
@@ -58,4 +62,10 @@ public class VoitureApi implements Api<Voiture> {
     public Voiture delete(int id) {
         return null;
     }
+
+	@Override
+	public Voiture[] getAll() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }
