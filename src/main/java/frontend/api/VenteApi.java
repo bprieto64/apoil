@@ -5,7 +5,9 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import frontend.model.Vente;
+import frontend.model.Voiture;
 
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -26,7 +28,7 @@ public class VenteApi implements Api<Vente> {
 
     @Override
     public Vente[] getAll() {
-        return mapper.convertValue(apiService.getList(url), new TypeReference<Vente[]>() {
+        return mapper.convertValue(apiService.getList(url,null), new TypeReference<Vente[]>() {
         });
     }
 
@@ -54,4 +56,10 @@ public class VenteApi implements Api<Vente> {
     public Vente delete(int id) {
         return null;
     }
+
+	@Override
+	public Voiture[] getWithFilters(Map<String, String> filters) {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

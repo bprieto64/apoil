@@ -1,6 +1,10 @@
 package frontend.api;
 
+import java.util.Map;
+
 import com.fasterxml.jackson.core.JsonProcessingException;
+
+import frontend.model.Voiture;
 
 /**
  * Interface to implement for interact with a REST API resource.
@@ -11,7 +15,7 @@ interface Api<T> {
      * Get all object
      * @return List object
      */
-    T[] getAll();
+	T[] getAll();
 
     /**
      * Get an element by is id
@@ -40,4 +44,9 @@ interface Api<T> {
      * @return the element
      */
     T delete(int id);
+
+	Voiture[] getWithFilters(Map<String, String> filters);
+
+
+	
 }
