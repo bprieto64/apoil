@@ -3,7 +3,7 @@ package frontend.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 
 import frontend.api.VenteApi;
-import frontend.api.VoitureApi;
+
 import frontend.model.Utilisateur;
 import frontend.model.Vente;
 import frontend.model.Voiture;
@@ -16,18 +16,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 
 @Controller
 public class VenteController {
 	
-	private final Logger log = LoggerFactory.getLogger(this.getClass());
 	
 	@Autowired
     private VenteApi venteApi;
-	private VoitureApi voitureApi;
 
     @GetMapping("/user")
     public String list(Model model) {

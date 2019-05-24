@@ -38,9 +38,7 @@ public class VoitureApi implements Api<Voiture> {
     }
     
     public Voiture[] getPhotos() {
-
     	return mapper.convertValue(apiService.getList(url + "/photos", null), new TypeReference<Voiture[]>() {
-
         });
     }
 
