@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VoitureApi implements Api<Voiture> {
 
-    private static final String url = "http://localhost:8081/voitures";
+    private static final String url = "http://localhost:8081/api/voitures";
 
     @Autowired
     private ApiService apiService;
@@ -36,7 +36,7 @@ public class VoitureApi implements Api<Voiture> {
     }
     
     public Voiture[] getPhotos() {
-    	return mapper.convertValue(apiService.getList("http://localhost:8081/voitures/photos"), new TypeReference<Voiture[]>() {
+    	return mapper.convertValue(apiService.getList(url + "/photos"), new TypeReference<Voiture[]>() {
         });
     }
 
