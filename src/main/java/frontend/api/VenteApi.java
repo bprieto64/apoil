@@ -13,7 +13,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class VenteApi implements Api<Vente> {
 
-    private static final String url = "http://localhost:8081/ventes";
+    private static final String url = "http://localhost:8081/api/ventes";
 
     @Autowired
     private ApiService apiService;
